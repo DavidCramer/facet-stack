@@ -102,7 +102,7 @@ class Facet_Stack_Widget extends WP_Widget {
 			foreach ( $facets as $facet ) {
 				
 				$facetline = '<p class="facet-stack-facet" data-facet="' . esc_attr( $facet['name'] ) . '"><span class="dashicons dashicons-menu sortable-item"></span>';
-					$facetline .= '<span class="facet-stack-label" contenteditable="true">' . esc_html( $facet['label'] ) . '</span>';
+					$facetline .= '<span class="facet-stack-label">' . esc_html( $facet['label'] ) . '</span>';
 					$facetline .= '<span class="facet-stack-name">' . esc_html( $facet['name'] ) . '</span>';
 				$facetline .= '</p>';
 
