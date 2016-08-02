@@ -1,0 +1,37 @@
+.facet-stack-facets{
+	min-height: 60px;
+}
+.facet-stack-disabled-facets {
+  background: #f8f8f8 none repeat scroll 0 0;
+  border: 1px dashed #cfcfcf;
+  margin: 0 -3px 12px;
+  padding: 0 3px;
+}
+.facet-stack-disabled-facets .facet-stack-facet {
+  color: #8f8f8f;
+  opacity: 0.7;
+}
+.facet-stack-disabled-facets .facet-stack-facet:hover{
+  opacity: 1;
+}
+.facet-stack-highlight-placeholder,
+.facet-stack-facet {
+  border: 1px solid #e5e5e5;
+  background: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.07);
+  margin: 9px 0;
+  padding: 6px 10px;
+}
+.facet-stack-highlight-placeholder {
+  background: #f1f1f1 none repeat scroll 0 0;
+  border: 1px dashed #cfcfcf;
+  box-shadow: none;
+}
+.facet-stack-facet .dashicons {
+  color: #cfcfcf;
+  cursor: move;
+  margin: 0 3px 0 -3px;
+}
+.facet-stack-checkbox.checkbox{
+  margin-bottom: -6px;
+}
