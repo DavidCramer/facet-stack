@@ -89,24 +89,33 @@ class Facet_Stack_Widget extends WP_Widget {
 	 */
 	function form( $instance ) {
 
+		// get settings
 		$instance = wp_parse_args( (array) $instance, array( 'facets' => '' ) );
 		$selection = explode( ',', strip_tags( $instance['facets'] ) );
 		$show_titles = isset( $instance['show_titles'] ) ? 'checked="checked"' : null;
 		$load_style = isset( $instance['load_style'] ) ? 'checked="checked"' : null;
+		$hide_on_pages = isset( $instance['hide_on_pages'] ) ? 'checked="checked"' : null;
 
 		do_action( 'facet_stack_widget_form_start', $instance );
 		
 		$facets = FWP()->helper->get_facets();
 
+		// Show Titles
 		echo '<p><input type="checkbox" id="' . $this->get_field_id('show_titles') . '" name="' . $this->get_field_name('show_titles') . '" class="checkbox facet-stack-checkbox" ' . $show_titles . '>';
 		echo '<label for="' . $this->get_field_id('show_titles') . '">' . esc_html__( 'Show Titles', 'facet-stack' ) . '</label></p>';
 
+		// Alt Loader
 		echo '<p><input type="checkbox" id="' . $this->get_field_id('load_style') . '" name="' . $this->get_field_name('load_style') . '" class="checkbox facet-stack-checkbox" ' . $load_style . '>';
 		echo '<label for="' . $this->get_field_id('load_style') . '">' . esc_html__( 'Alternate Load Styles', 'facet-stack' ) . '</label></p>';
+
+		// Hide if no facet templates
+		echo '<p><input type="checkbox" id="' . $this->get_field_id('hide_on_pages') . '" name="' . $this->get_field_name('hide_on_pages') . '" class="checkbox facet-stack-checkbox" ' . $hide_on_pages . '>';
+		echo '<label for="' . $this->get_field_id('hide_on_pages') . '">' . esc_html__( 'Only show on pages with a Template', 'facet-stack' ) . '</label></p>';
 
 
 		echo '<h4>' . esc_html__( 'Enabled Facets', 'facet-stack' ) . '</h4>';
 		echo '<div id="' . $this->get_field_id('facets') . '_list" class="facet-stack-facets facet-stack-enabled-facets facet-stack-tray">';
+		echo '<p class="description">' . esc_html__( 'Your Stack is empty, drag a facet from below to enable.', 'facet-stack' ) . '</p>';
 		if(!empty($facets)){
 			$enabled = array();
 			$disabled = array();
@@ -159,10 +168,18 @@ class Facet_Stack_Widget extends WP_Widget {
 							facets.push( $(this).data('facet') );
 						})
 
+						if( facets.length ){
+							facet_enabled_tray.find('.description').slideUp(100);
+						}else{
+							facet_enabled_tray.find('.description').slideDown(100);
+						}
 						selection.val( facets.join(',') ).trigger('change');
 
 					}
 				});
+
+				$('#<?php echo $this->get_field_id('color'); ?>').wpColorPicker();
+
 			})
 		</script>
 		<?php
