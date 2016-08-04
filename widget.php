@@ -10,7 +10,9 @@ class Facet_Stack_Widget extends WP_Widget {
 	 */
 	function __construct() {
 		// Instantiate the parent object
-		parent::__construct( false, __('Facet Stack', 'facet-stack' ) );
+		parent::__construct( false, __('Facet Stack', 'facet-stack' ), array(
+			'description' => __('A stack of facets for FacetWP', 'facet-stack' )
+		) );
 
 		/**
 		 * Runs after Facet Stack widget is initialized
