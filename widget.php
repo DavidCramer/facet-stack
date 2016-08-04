@@ -37,22 +37,31 @@ class Facet_Stack_Widget extends WP_Widget {
 
 			extract($args, EXTR_SKIP);
 
+			if( isset( $instance['hide_on_pages'] ) ){
+				// check loading
+				if( false === FWP()->display->load_assets ){
+					return;
+				}
+			}
+
 			if( isset( $instance['load_style'] ) ){
 				include_once FACET_STACK_PATH . 'load-style.php';
 			}
 
 			$facets = explode( ',', $instance['facets'] );
 
+			echo $before_widget;
+			
 			foreach( $facets as $facet ){
 				$facet = $facets = FWP()->helper->get_facet_by_name( $facet );				
-				echo $before_widget;
+				
 				if( isset( $instance['show_titles'] ) ){
 					echo $before_title . $facet['label'] . $after_title;
 				}
 				echo facetwp_display( 'facet', $facet['name'] );
 
 			}
-			echo $after_widget;	
+			echo $after_widget;
 		}
 	}
 
