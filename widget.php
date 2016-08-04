@@ -114,7 +114,6 @@ class Facet_Stack_Widget extends WP_Widget {
 				
 				$facetline = '<p class="facet-stack-facet" data-facet="' . esc_attr( $facet['name'] ) . '"><span class="dashicons dashicons-menu sortable-item"></span>';
 					$facetline .= '<span class="facet-stack-label">' . esc_html( $facet['label'] ) . '</span>';
-					$facetline .= '<span class="facet-stack-name">' . esc_html( $facet['name'] ) . '</span>';
 				$facetline .= '</p>';
 
 				if( in_array( $facet['name'], $selection ) ){
