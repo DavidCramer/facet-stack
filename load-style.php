@@ -1,14 +1,15 @@
 <?php
 
 
-add_filter( 'facetwp_load_assets', function( $has_assets ) {
+add_filter( 'facetwp_load_assets', 'facet_stack_enqueue_alt_loader', 50);
+function facet_stack_enqueue_alt_loader( $has_assets ) {
 	if( true === $has_assets ){
-		add_action( 'wp_footer', 'facetwp_facet_loading_animator', 100);		
+		add_action( 'wp_footer', 'facet_stack_alt_loader', 100);		
 	}
 	return $has_assets;
-});
+}
 
-function facetwp_facet_loading_animator(){
+function facet_stack_alt_loader(){
 	?>
 	<script>
 	if( FWP ){ 
