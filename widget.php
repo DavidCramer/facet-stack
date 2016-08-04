@@ -142,8 +142,8 @@ class Facet_Stack_Widget extends WP_Widget {
 
 		echo '<input id="' . $this->get_field_id('facets') . '" name="' . $this->get_field_name('facets') . '" type="hidden" value="' . esc_html( implode(',', $selection ) ) . '" />';
 
-		wp_enqueue_style( 'facet-stack-admin', FACET_STACK_URL . 'assets/css/admin.css', array(), FACET_STACK_VER );
-		wp_enqueue_script( 'facet-stack-admin', FACET_STACK_URL . 'assets/js/admin.js', array( 'jquery' ), FACET_STACK_VER );
+		// add style sheet
+		wp_enqueue_style( 'facet-stack-admin', FACET_STACK_URL . 'assets/css/admin.min.css', null, FACET_STACK_VER );
 
 		?>
 		<script>
@@ -177,10 +177,7 @@ class Facet_Stack_Widget extends WP_Widget {
 
 					}
 				});
-
-				$('#<?php echo $this->get_field_id('color'); ?>').wpColorPicker();
-
-			})
+			});
 		</script>
 		<?php
 		do_action( 'facet_stack_widget_form_end', $instance, $this );
