@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Facet Stack for FacetWP
  * Plugin URI:  http://cramer.co.za
- * Description: A Widget for creating a stack of styled Facets
+ * Description: A Widget for creating a stack of Facets for FacetWP
  * Version:     1.0.0
  * Author:      David Cramer
  * Author URI:  http://cramer.co.za
