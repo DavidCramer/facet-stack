@@ -1,3 +1,35 @@
+@font-face {
+  font-family: 'facetwp';
+  src:  url('fonts/facetwp.eot?z0vdt4');
+  src:  url('fonts/facetwp.eot?z0vdt4#iefix') format('embedded-opentype'),
+    url('fonts/facetwp.ttf?z0vdt4') format('truetype'),
+    url('fonts/facetwp.woff?z0vdt4') format('woff'),
+    url('fonts/facetwp.svg?z0vdt4#facetwp') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+#available-widgets [class*="facet_stack"] .widget-title::before {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'facetwp' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  content: "\e900";
+}
+
+#customize-controls .facet-stack-tray .description {
+  color: #b0b0b0;
+  text-align: center;
+}
 .facet-stack-facets{
 	min-height: 60px;
 }
