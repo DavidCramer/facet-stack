@@ -20,5 +20,5 @@ define('FACET_STACK_URL', plugin_dir_url(__FILE__));
 define('FACET_STACK_VER', '1.0.0');
 define('FACET_STACK_BASENAME', plugin_basename( __FILE__ ));
 
-
+// load widget
 include_once FACET_STACK_PATH . 'widget.php';
