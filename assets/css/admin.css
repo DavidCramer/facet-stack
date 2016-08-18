@@ -24,6 +24,7 @@
   -moz-osx-font-smoothing: grayscale;
 
   content: "\e900";
+  color: #906dbe;
 }
 
 #customize-controls .facet-stack-tray .description {
@@ -66,4 +67,32 @@
 }
 .facet-stack-checkbox.checkbox{
   margin-bottom: -6px;
+}
+.facet-stack-wrapper {
+  box-shadow: -5px 0 0 #ededed;
+  margin: -2px -5px 12px -11px;
+  padding-left: 5px;
+}
+.customize-control .facet-stack-wrapper {
+  margin: -2px 0 12px -5px;
+}
+.facet-stack-section-wrapper > h4 {
+  background: #f1f1f1 none repeat scroll 0 0;
+  box-shadow: 5px 0 0 #906dbe inset, 0 -1px 0 0 #dedede inset, 0 1px 0 0 #dedede inset;
+  cursor: pointer;
+  margin: -1px -10px;
+  padding: 11px 10px 12px;
+}
+.facet-stack-section > h3,
+#customize-controls .facet-stack-section > h3 {
+  color: #4f4f4f;
+  font-size: 12px;
+  margin: 12px 0;
+}
+.facet-stack-section{
+  display: none;
+}
+.facet-stack-section-wrapper .dashicons.dashicons-arrow-down,
+.facet-stack-section-wrapper .dashicons.dashicons-arrow-up {
+  float: right;
 }
