@@ -1,4 +1,14 @@
 <?php
+/**
+ * Facet Selection Panel template
+ *
+ * @package   facet_stack/widget_panels
+ * @author    David Cramer
+ * @license   GPL-2.0+
+ * @link
+ * @copyright 2016 David Cramer
+ */
+
 
 	$selection = explode( ',', strip_tags( $instance['facets'] ) );
 

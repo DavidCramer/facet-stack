@@ -1,4 +1,15 @@
 <?php
+/**
+ * General Settings Panel template
+ *
+ * @package   facet_stack/widget_panels
+ * @author    David Cramer
+ * @license   GPL-2.0+
+ * @link
+ * @copyright 2016 David Cramer
+ */
+
+
 	$show_titles = isset( $instance['show_titles'] ) ? 'checked="checked"' : null;
 	$load_style = isset( $instance['load_style'] ) ? 'checked="checked"' : null;
 	$multi_stack = isset( $instance['multi_stack'] ) ? 'checked="checked"' : null;

@@ -43,10 +43,11 @@ class Facet_Stack_Widget extends WP_Widget {
 
 			// check loading
 			if( false === FWP()->display->load_assets ){
+				// we dont load this widget if there is no template on this page.
 				return;
 			}
 
-			if( isset( $instance['load_style'] ) ){
+			if( isset( $instance['load_style'] ) ){ // include the alternat loader file.
 				include_once FACET_STACK_PATH . 'includes/load-style.php';
 			}
 
@@ -64,7 +65,11 @@ class Facet_Stack_Widget extends WP_Widget {
 					echo str_replace( $this->id, $this->id .'-' . $facet , $before_widget );
 				}
 
+				// load facet by name
 				$facet = $facets = FWP()->helper->get_facet_by_name( $facet );				
+				if( empty( $facet ) ){
+					continue; // facet can't be found. no worries, skip it and carry on.
+				}
 				
 				if( isset( $instance['show_titles'] ) ){
 					echo $before_title . $facet['label'] . $after_title;
@@ -134,11 +139,17 @@ class Facet_Stack_Widget extends WP_Widget {
 	}
 }
 
+/**
+ * Register the Facet Stack widget
+ *
+ * @uses "widgets_init" hook
+ * @since 1.0.0
+ *
+ */
 function facet_stack_register_widget() {
 	if( ! did_action( 'facet_stack_widget_init' ) ){
 		register_widget( 'Facet_Stack_Widget' );
 	}
 
 }
-
 add_action( 'widgets_init', 'facet_stack_register_widget' );

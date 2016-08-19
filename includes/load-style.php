@@ -1,14 +1,43 @@
 <?php
+/**
+ * Alternitive facet loader override
+ * This is only loaded if the alt loader option is enabled.
+ *
+ * @package   facet_stack/front
+ * @author    David Cramer
+ * @license   GPL-2.0+
+ * @link
+ * @copyright 2016 David Cramer
+ */
 
 
-add_filter( 'facetwp_load_assets', 'facet_stack_enqueue_alt_loader', 50);
+/**
+ * Enqueue the Alternative Loader
+ *
+ * @since 1.0.0
+ * @uses "add_meta_boxes" hook
+ *
+ * @param bool $has_assets true if FacetWP assets are to be loaded
+ *
+ * @return bool $has_assets Return original check
+ */
 function facet_stack_enqueue_alt_loader( $has_assets ) {
 	if( true === $has_assets ){
 		add_action( 'wp_footer', 'facet_stack_alt_loader', 100);		
 	}
 	return $has_assets;
 }
+// add filter to check if FacetWP assets are being loaded. If true, add action to load overrides in footer.
+add_filter( 'facetwp_load_assets', 'facet_stack_enqueue_alt_loader', 50);
 
+
+/**
+ * Output the FWP alternate loader scripts
+ *
+ * @since 1.0.0
+ * @uses "wp_footer" hook
+ *
+ */
 function facet_stack_alt_loader(){
 	?>
 	<script>
@@ -74,4 +103,3 @@ function facet_stack_alt_loader(){
 	</script>
 	<?php
 }
-
