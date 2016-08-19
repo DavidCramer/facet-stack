@@ -52,18 +52,35 @@ class Facet_Stack_Widget extends WP_Widget {
 
 			$facets = explode( ',', $instance['facets'] );
 
-			echo $before_widget;
+			// Not a multi stack (facets are wrapped in a single widget wrapper )
+			if( !isset( $instance['multi_stack'] ) ){
+				echo $before_widget;
+			}
 			
 			foreach( $facets as $facet ){
+				
+				if( isset( $instance['multi_stack'] ) ){
+					// multi stack (Each facet gets it's own widget wrapper )
+					echo str_replace( $this->id, $this->id .'-' . $facet , $before_widget );
+				}
+
 				$facet = $facets = FWP()->helper->get_facet_by_name( $facet );				
 				
 				if( isset( $instance['show_titles'] ) ){
 					echo $before_title . $facet['label'] . $after_title;
 				}
+
 				echo facetwp_display( 'facet', $facet['name'] );
 
+				if( isset( $instance['multi_stack'] ) ){
+					echo $after_widget;
+				}
 			}
-			echo $after_widget;
+
+			if( !isset( $instance['multi_stack'] ) ){
+				echo $after_widget;
+			}
+			
 		}
 	}
 
