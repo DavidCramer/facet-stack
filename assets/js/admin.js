@@ -82,16 +82,6 @@ jQuery( function($){
 		e.stopPropagation();
 		var field = $( this );
 	})
-	//colors
-	$('.color-field').wpColorPicker({
-		change: function(obj){
-			
-			var trigger = $(this);
-			if( trigger.data('target') ){
-				$( trigger.data('target') ).css( trigger.data('style'), trigger.val() );
-			}
-			
-		}
-	});
+
 
 });
