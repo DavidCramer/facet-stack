@@ -18,6 +18,9 @@ class Facet_Stack_Widget extends WP_Widget {
 			)
 		);
 
+		// enqueue loader script
+		add_filter( 'facetwp_assets', array( $this, 'enqueue_init' ), 50 );
+
 		/**
 		 * Runs after Facet Stack widget is initialized
 		 *
@@ -41,12 +44,9 @@ class Facet_Stack_Widget extends WP_Widget {
 
 			extract($args, EXTR_SKIP);
 
-			// check loading
-			if( false === FWP()->display->load_assets ){
-				// we dont load this widget if there is no template on this page.
-				return;
-			}
-
+			// push an inline script to hide facet widgets
+			echo '<style type="text/css">.widget_facet_stack_widget{display:none;}</style>';
+			
 			if( isset( $instance['load_style'] ) ){ // include the alternat loader file.
 				include_once FACET_STACK_PATH . 'includes/load-style.php';
 			}
@@ -87,6 +87,20 @@ class Facet_Stack_Widget extends WP_Widget {
 			}
 			
 		}
+	}
+
+	/**
+	 * Output script to show the facet widgets
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param array $assets
+	 *
+	 * @return array $assets
+	 */
+	public function enqueue_init( $assets ){
+		$assets['facetstack.min.js'] = FACET_STACK_URL . 'assets/js/facetstack.min.js';
+		return $assets;
 	}
 
 	/**
