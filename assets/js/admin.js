@@ -54,7 +54,6 @@ jQuery( function($){
 			create : function(ev, ui){
 				var list = $( this );
 				if( list.hasClass( 'facet-stack-enabled-facets' ) ){
-					console.log( list );
 					show_tut_message( list );
 				}
 				//reset_facet_ordering( $( this ) );
@@ -72,14 +71,6 @@ jQuery( function($){
 		if( sort_stack.length ){
 			init_sortable_facets( sort_stack );
 		}
-		//colors
-		$('.color-field').wpColorPicker({
-			change: function(obj){
-				
-				$( this ).trigger('change');
-			}
-		});		
-
 	})
 
 	init_sortable_facets();
