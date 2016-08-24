@@ -12,9 +12,9 @@ class Facet_Stack_Widget extends WP_Widget {
 		// Instantiate the parent object
 		parent::__construct( 
 			false, 
-			__('Facet Stack', 'facet-stack' ), 
+			__( 'Facet Stack', 'facet-stack' ), 
 			array(
-				'description' => __('A stack of facets for FacetWP', 'facet-stack'),
+				'description' => __( 'A stack of facets for FacetWP', 'facet-stack' ),
 			)
 		);
 
@@ -146,7 +146,7 @@ class Facet_Stack_Widget extends WP_Widget {
 		echo '</div>';
 		// add style sheet
 		wp_enqueue_style( 'facet-stack-admin', FACET_STACK_URL . 'assets/css/admin.min.css', null, FACET_STACK_VER );
-		wp_enqueue_script( 'facet-stack-admin', FACET_STACK_URL . 'assets/js/admin.min.js', array('jquery'), FACET_STACK_VER );
+		wp_enqueue_script( 'facet-stack-admin', FACET_STACK_URL . 'assets/js/admin.min.js', array( 'jquery' ), FACET_STACK_VER );
 
 		//end form
 		do_action( 'facet_stack_widget_form_end', $instance, $this );
