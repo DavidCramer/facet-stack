@@ -34,19 +34,6 @@
 .facet-stack-facets{
 	min-height: 60px;
 }
-.facet-stack-disabled-facets {
-  background: #f8f8f8 none repeat scroll 0 0;
-  border: 1px dashed #cfcfcf;
-  margin: 0 -3px 12px;
-  padding: 0 3px;
-}
-.facet-stack-disabled-facets .facet-stack-facet {
-  color: #8f8f8f;
-  opacity: 0.7;
-}
-.facet-stack-disabled-facets .facet-stack-facet:hover{
-  opacity: 1;
-}
 .facet-stack-highlight-placeholder,
 .facet-stack-facet {
   border: 1px solid #e5e5e5;
@@ -64,6 +51,13 @@
   color: #cfcfcf;
   cursor: move;
   margin: 0 3px 0 -3px;
+}
+.facet-stack-facet .facet-stack-remove.dashicons {
+  cursor: pointer;
+  float: right;
+}
+.facet-stack-disabled-facets .facet-stack-facet{
+  display: none;
 }
 .facet-stack-checkbox.checkbox{
   margin-bottom: -6px;

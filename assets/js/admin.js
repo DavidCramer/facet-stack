@@ -27,7 +27,7 @@ jQuery( function($){
 				facets.push( $(this).data('facet') );
 			})
 			show_tut_message( facet_enabled_tray );
-
+			console.log( selection );
 			if( selection.length ){
 				selection.val( facets.join(',') ).trigger('change');
 			}
@@ -82,6 +82,35 @@ jQuery( function($){
 		e.stopPropagation();
 		var field = $( this );
 	})
+	// selector
+	$( document ).on( 'change', '.facet-selector', function(e){
+		var select = $( this ),
+			facet = select.val(),
+			parent = select.parent(),
+			stack = parent.parent(),
+			enabled = stack.find('.facet-stack-enabled-facets'),
+			new_item = stack.find('.facet-stack-facet[data-facet="' + facet + '"]').clone();
 
+		new_item.appendTo( enabled );
+		select.val('').find('option[value="' + facet + '"]').prop( 'disabled', true );
+
+		init_sortable_facets( enabled );
+		show_tut_message( enabled );
+		reset_facet_ordering( new_item );
+	});
+
+	$( document ).on( 'click', '.facet-stack-remove', function(e){
+		var clicked = $( this ),
+			facet = clicked.data('facet'),
+			wrapper = clicked.closest('.facet-stack-facet'),
+			parent = clicked.closest('.facet-stack-section'),
+			enabled = parent.find('.facet-stack-enabled-facets'),
+			selector = parent.find('select.facet-selector');
+			wrapper.remove();
+			selector.find('option[value="' + facet + '"]').prop('disabled', false);
+		init_sortable_facets( enabled );
+		show_tut_message( enabled );
+		reset_facet_ordering( parent.find('.facet-stack-facet[data-facet="' + facet + '"]') );
+	});
 
 });
