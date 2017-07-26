@@ -29,7 +29,6 @@
 					facets.push( $(this).data('facet') );
 				})
 				show_tut_message( facet_enabled_tray );
-				console.log( selection );
 				if( selection.length ){
 					selection.val( facets.join(',') ).trigger('change');
 				}

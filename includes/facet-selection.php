@@ -15,7 +15,7 @@
 	echo '<div class="facet-stack-section-wrapper">';
 
 		echo '<h4>' . esc_html__( 'Facet Selection', 'facet-stack' ) . ' <span class="facet-stack-section-toggle dashicons dashicons-arrow-down"></span></h4>';
-		
+
 		echo '<div class="facet-stack-section">';
 
 			echo '<h3>' . esc_html__( 'Enabled Facets', 'facet-stack' ) . '</h3>';
@@ -31,20 +31,23 @@
 								$facetline .= '<span data-facet="' . esc_attr( $facet['name'] ) . '" class="facet-stack-remove dashicons dashicons-no"></span>';
 							$facetline .= '</p>';
 							$active = null;
-						if( in_array( $facet['name'], $selection ) ){							
-							$enabled[] = $facetline;
+						if( in_array( $facet['name'], $selection ) ){
+							$index = array_search( $facet['name'], $selection );
+							$enabled[$index] = $facetline;
 							$active = ' disabled="disabled"';
 						}
 						$facet_items[] = $facetline;
 						// add to selector
 						$facet_list[] = '<option value="' . esc_attr( $facet['name'] ) . '"' . $active . '>' . esc_attr( $facet['label'] ) . '</option>';
 					}
+					ksort( $enabled );
 				}
+
 				echo implode( $enabled );
 			echo '</div>';
 
 			echo '<h3>' . esc_html__( 'Disabled Facets', 'facet-stack' ) . '</h3>';
-			
+
 			echo '<div class="facet-stack-tray facet-stack-disabled-facets">';
 				echo '<select class="widefat facet-selector" style="margin-bottom: 10px"><option></option>';
 				echo implode( $facet_list );
