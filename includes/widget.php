@@ -72,7 +72,7 @@ class Facet_Stack_Widget extends WP_Widget {
 				}
 				
 				if( isset( $instance['show_titles'] ) ){
-					echo $before_title . $facet['label'] . $after_title;
+					echo $before_title . facetwp_i18n( $facet['label'] ) . $after_title;
 				}
 
 				echo facetwp_display( 'facet', $facet['name'] );
