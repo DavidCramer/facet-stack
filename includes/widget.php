@@ -99,7 +99,7 @@ class Facet_Stack_Widget extends WP_Widget {
 	 * @return array $assets
 	 */
 	public function enqueue_init( $assets ){
-		$assets['facetstack.min.js'] = FACET_STACK_URL . 'assets/js/facetstack.min.js';
+		$assets['facetstack.js'] = FACET_STACK_URL . 'assets/js/facetstack.js';
 		return $assets;
 	}
 
@@ -145,8 +145,8 @@ class Facet_Stack_Widget extends WP_Widget {
 
 		echo '</div>';
 		// add style sheet
-		wp_enqueue_style( 'facet-stack-admin', FACET_STACK_URL . 'assets/css/admin.min.css', null, FACET_STACK_VER );
-		wp_enqueue_script( 'facet-stack-admin', FACET_STACK_URL . 'assets/js/admin.min.js', array( 'jquery' ), FACET_STACK_VER );
+		wp_enqueue_style( 'facet-stack-admin', FACET_STACK_URL . 'assets/css/admin.css', null, FACET_STACK_VER );
+		wp_enqueue_script( 'facet-stack-admin', FACET_STACK_URL . 'assets/js/admin.js', array( 'jquery' ), FACET_STACK_VER );
 
 		//end form
 		do_action( 'facet_stack_widget_form_end', $instance, $this );
